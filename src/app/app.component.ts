@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'gpt_lookup_frontend';
+  
+  sendUserInput(userIn: string): void {
+    const url: string = 'localhost:8000';
+    // Makes request to backend for results
+    
+  }
 }
