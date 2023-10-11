@@ -1,4 +1,4 @@
-<div class="search-bar">
-  <input type="text" placeholder="What kind of house are you looking for?">
-  <button>Get Results</button>
-</div>
+<form class="search-bar" (submit)="sendUserInput">
+  <input type="text" placeholder="What kind of house are you looking for?" name="userIn" ngModel>
+  <button>Search</button>
+</form>
