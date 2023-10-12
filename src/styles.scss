@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+$dark-blue: #03256C;
+$med-blue: #2541B2;
+$light-blue: #1768AC;
+
+body {
+    background-color: $light-blue;
+}
