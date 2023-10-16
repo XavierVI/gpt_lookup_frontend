@@ -45,6 +45,9 @@ h1 {
 }
 
 textarea {
-    
+    width: 70%;
+    border-radius: 15px;
+    background-color: white;
     resize: none;
+    overflow: scroll;
 }

@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   userIn: string = '';
-  res: any;
   textArea: string = '';
 
   constructor(private httpClient: HttpClient) { }
@@ -20,11 +19,22 @@ export class AppComponent implements OnInit {
     const json = { userIn: this.userIn };
     console.log(this.userIn);
     // Makes request to backend for results
+    this.textArea = '';
     this.httpClient.post<any>(url, json).subscribe(res => {
       console.log(res);
-      this.res = res;
-      this.textArea = res;
+      if(!res.autocomplete) this.textArea += res.mssg;
+      else this.setTextArea(res.autocomplete);
     });
-    console.log(this.res);
   }
+
+  setTextArea(arr: Array<any>){
+    for(let i = 0; i < arr.length; i++){
+      let line = '';
+      line += `Area type: ${arr[i].area_type}, `;
+      line += `State: ${arr[i].state}, city: ${arr[i].city}`;
+      line += `Score: ${arr[i].score}`;
+      this.textArea += (line + '\n');
+    }
+  }
+
 }
