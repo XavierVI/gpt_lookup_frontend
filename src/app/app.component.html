@@ -2,8 +2,14 @@
   <h1>GPT Lookup Demo</h1>
 </header>
 
-<form class="search-bar" (ngSubmit)="onSubmit()">
-  <input type="text" placeholder="What kind of house are you looking for?"
-   name="userIn" [(ngModel)]="userIn" required>
-  <button>Search</button>
+
+<form class="form" (ngSubmit)="onSubmit()">
+  <label for="userIn">Describe the the area you plan on moving to and the kind of home you're looking for.</label>
+  <div class="search-bar">
+    <input type="text" placeholder="What kind of house are you looking for?"
+           name="userIn" [(ngModel)]="userIn" required>
+    <button>Search</button>
+  </div>
+  
+  <textarea name="res" id="res" cols="30" rows="10" [(ngModel)]="textArea" disabled="true"></textarea>
 </form>

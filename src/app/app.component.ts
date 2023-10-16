@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   userIn: string = '';
   res: any;
+  textArea: string = '';
 
   constructor(private httpClient: HttpClient) { }
   
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
     this.httpClient.post<any>(url, json).subscribe(res => {
       console.log(res);
       this.res = res;
+      this.textArea = res;
     });
     console.log(this.res);
   }
