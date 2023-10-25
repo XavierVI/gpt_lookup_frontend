@@ -12,29 +12,27 @@ export class AppComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) { }
   
-  ngOnInit(): void {  }
+  ngOnInit(): void { }
 
   onSubmit(): void {
-    const url: string = `http://localhost:8000/gpt`;
+    const url: string = `https://dukecitydigital.com/demo-api/get-listings/`;
     const json = { userIn: this.userIn };
     console.log(this.userIn);
     // Makes request to backend for results
     this.textArea = '';
     this.httpClient.post<any>(url, json).subscribe(res => {
-      console.log(res);
-      if(!res.autocomplete) this.textArea += res.mssg;
-      else this.setTextArea(res.autocomplete);
+      console.log('Count: ' + res.data.home_search.count);
+      this.setTextArea(res.data.home_search.results);
     });
   }
 
   setTextArea(arr: Array<any>){
-    for(let i = 0; i < arr.length; i++){
-      let line = '';
-      line += `Area type: ${arr[i].area_type}, `;
-      line += `State: ${arr[i].state}, city: ${arr[i].city}`;
-      line += `Score: ${arr[i].score}`;
-      this.textArea += (line + '\n');
+    for(let comp of arr){
+      const address = comp.location.address;
+      const des = comp.description;
+      this.textArea += `Location: ${address.line}, ${address.city}, ${address.state}, ${address.postal_code}\n`;
+      this.textArea += `Sqft: ${des.sqft}, bedrooms: ${des.beds}, bathrooms: ${des.baths}\n`;
+      console.log('\n');
     }
   }
-
 }
