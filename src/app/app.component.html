@@ -14,13 +14,13 @@
 </p>
 <div class="search-bar">
   <input type="text" placeholder="Describe where you want to live"
-          name="userIn" [(ngModel)]="userIn" required>
+         name="userIn" [(ngModel)]="userIn" required>
   <button>Search</button>
 </div>
 </form>
 
-<div class="house-cards" *ngIf="houses.length > 0">
-<div class="card" *ngFor="let house of houses">
+<div class="house-cards" *ngIf="houses.length > 0">               
+<div class="card" *ngFor="let house of housesToDisplay">
   <img [src]="house.photo" alt="pic" width="100%"> <br>
   Address: {{house.address}} <br>
   Bedrooms: {{house.bedrooms}} <br>
@@ -31,5 +31,12 @@
   <a [href]="house.href" target="_blank">View property on realtor.com</a>
 </div>
 </div>
+
+<mat-paginator
+    class="house-cards" *ngIf="houses.length > 0"
+    (page)="handlePageEvent($event)" [length]="length"
+    [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="pageIndex" aria-label="Select page">
+</mat-paginator>
 
 <mat-progress-bar color="black" mode="indeterminate" bufferValue="0" *ngIf="progressBar"></mat-progress-bar>

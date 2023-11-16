@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

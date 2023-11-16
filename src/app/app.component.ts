@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,13 @@ export class AppComponent implements OnInit {
   userIn: string = '';
   houses: Array<any> = [];
   progressBar = false;
+
+  // pagination variables
+  length = 0; // the total number of houses
+  pageSize = 5; // the number of houses per page
+  pageIndex = 0; // this marks the current page
+  pageSizeOptions = [5, 10, 25];
+  housesToDisplay: any[] = []; // the houses to be displayed on the page
 
   constructor(private httpClient: HttpClient) { }
   
@@ -28,8 +36,6 @@ export class AppComponent implements OnInit {
 
   setTextArea(res: Array<any>){
     for(let obj of res){
-      console.log(obj);
-      // Checks if number of houses in obj is 0
       if(obj.data.home_search.count == 0) continue;
       else if(!obj) continue;
 
@@ -60,6 +66,13 @@ export class AppComponent implements OnInit {
         }
       } 
     }
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    const start = event.pageSize*event.pageIndex;
+    const end = (event.pageSize-1) + event.pageSize*event.pageIndex;
+    this.housesToDisplay = this.houses.slice(start, end+1);
   }
 
   format(num: number): string{
