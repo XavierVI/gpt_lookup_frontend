@@ -1,35 +1,36 @@
 <header>
-  <h1><b>Lookup Demo</b></h1>
-  <p>
-    This web app allows you to search for places to live by city and other locations, such as colleges or other points of interest. <br>
-    You can use this app to find a new place to live, or to explore different neighborhoods in your current city.
-  </p>
+  <div class="heading">
+    <h1><b>Lookup Demo</b></h1>
+    <p>
+      Search for places to live by city or points of interest
+    </p>
+  </div>
+  <a href="https://github.com" target="_blank">GitHub Repo</a>
 </header>
 
 <form class="form" (ngSubmit)="onSubmit()">
-<p for="userIn">
-  Simply enter the city you would like to live in in the search bar. <br>
-  You can also specify locations you would like to live by, such as a college or a point of interest. <br>
-  For example, you could search for "houses near Stanford University" or "Apartments in downtown Seattle."
-</p>
-<div class="search-bar">
-  <input type="text" placeholder="Describe where you want to live"
-         name="userIn" [(ngModel)]="userIn" required>
-  <button>Search</button>
-</div>
+  <p for="userIn">
+    Enter the city you would like to live in in the search bar. <br>
+    You can also specify locations you would like to live by, such as a college.
+  </p>
+  <div class="search-bar">
+    <input type="text" placeholder="Describe where you want to live"
+          name="userIn" [(ngModel)]="userIn" required>
+    <button>Search</button>
+  </div>
 </form>
 
 <div class="house-cards" *ngIf="houses.length > 0">               
-<div class="card" *ngFor="let house of housesToDisplay">
-  <img [src]="house.photo" alt="pic" width="100%"> <br>
-  Address: {{house.address}} <br>
-  Bedrooms: {{house.bedrooms}} <br>
-  Bathrooms: {{house.bathrooms}} <br>
-  Sqft: {{house.sqft}} <br>
-  Lot sqft: {{format(house.lot_sqft)}} <br>
-  List price: ${{format(house.price)}} <br>
-  <a [href]="house.href" target="_blank">View property on realtor.com</a>
-</div>
+  <div class="card" *ngFor="let house of housesToDisplay">
+    <img [src]="house.photo" alt="pic" width="100%"> <br>
+    Address: {{house.address}} <br>
+    Bedrooms: {{house.bedrooms}} <br>
+    Bathrooms: {{house.bathrooms}} <br>
+    Sqft: {{house.sqft}} <br>
+    Lot sqft: {{format(house.lot_sqft)}} <br>
+    List price: ${{format(house.price)}} <br>
+    <a [href]="house.href" target="_blank">View property on realtor.com</a>
+  </div>
 </div>
 
 <mat-paginator

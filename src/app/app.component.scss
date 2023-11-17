@@ -1,19 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
-$dark-blue: #03256C;
-$med-blue: #2541B2;
-$light-blue: #49a8f7;
+@use '../styles.scss' as style;
 
 header{
-    margin: 0px;
+    display: flex;
+    justify-content: space-between;
     padding: 25px;
-
+    box-shadow: 1px 10px 10px -7px black;
+    -webkit-box-shadow: 1px 10px 10px -7px black;
+    -moz-box-shadow: 1px 10px 10px -7px black;
     // background-color: g.$dark-blue;
+    p { font-size: larger; }
+    a { align-self: flex-end;}
 }
 
 h1 {
     // color: white;
     margin: 0px;
-    font-family: roboto; 
+    font-family: roboto;
 }
 
 .form {
@@ -21,11 +23,11 @@ h1 {
     flex-direction: column;
     align-items: center;
     font-family: roboto;
-}
 
-.form p{
-    padding: 20px;
-    margin-right: 15vw;
+    p{
+        padding: 20px;
+        margin-right: 15vw;
+    }
 }
 
 .search-bar {
@@ -35,31 +37,27 @@ h1 {
     gap: 25px;
     margin: 25px 0px;
     width: 100%;
-}
 
-.search-bar input {
-    width: 50%;
-    min-width: 300px;
-    margin: 0px;
-    border-radius: 50px;
-    padding: 10px;
-    font-family: roboto;
-}
+    input {
+        width: 50%;
+        min-width: 300px;
+        margin: 0px;
+        border-radius: 50px;
+        padding: 10px;
+        font-family: roboto;
+    }
 
-.search-bar button {
-    width: 10%;
-    min-width: 100px;
-    border-radius: 50px;
-    padding: 10px;
-    font-family: roboto;
-}
+    button {
+        width: 10%;
+        min-width: 100px;
+        border-radius: 50px;
+        padding: 10px;
+        font-family: roboto;
+    }
 
-.search-bar button:hover {
-    background-color: lightgray;
-}
+    button:hover { background-color: lightgray; }
 
-.search-bar button:active {
-    background-color: darkgray;
+    button:active { background-color: darkgray; }
 }
 
 .house-cards {

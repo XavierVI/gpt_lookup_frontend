@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
     const url: string = `https://localhost:8000/demo-api/get-listings/`;
     const json = { userIn: this.userIn };
     console.log(this.userIn);
-    // Makes request to backend for results
     this.httpClient.post<any>(url, json).subscribe(res => {
       console.log('Count: ' + res.data.home_search.count);
       this.setTextArea(res.data.home_search.results);
